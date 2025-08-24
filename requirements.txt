@@ -1,7 +1,6 @@
-# Production dependencies (none for this simple app)
+# Requirements for Password Generator Application
+# Note: This app uses only built-in Python modules
+# secrets, platform, datetime, os, sys, string are all built-in to Python 3.12
 
-# Development and testing dependencies
-pytest>=7.4.0
-pytest-cov>=4.1.0
-flake8>=6.0.0
-black>=23.0.0
+# No external dependencies required for this application
+# All functionality uses Python standard library modules
