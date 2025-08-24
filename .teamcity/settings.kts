@@ -167,7 +167,7 @@ object BuildAndTest : BuildType({
         python {
             name = "🚀 Run Application Test Mode"
             command = file {
-                filename = "hello_world.py"
+                filename = "app.py"
                 arguments = "--test"
             }
         }
@@ -192,7 +192,7 @@ object BuildAndTest : BuildType({
                 export TEAMCITY_VERSION=%teamcity.version%
                 
                 # Run the application
-                python3 hello_world.py
+                python3 app.py
                 
                 # NEW: Create demo artifact
                 echo "Pipeline configured by Tim Okito at %system.build.start.date%" > demo-output.txt
@@ -345,7 +345,7 @@ object Deploy : BuildType({
                 echo "📝 Deployment tracked in Git history - full audit trail!"
                 
                 # Run smoke test
-                python3 hello_world.py
+                python3 app.py
             """.trimIndent()
         }
 
@@ -421,7 +421,7 @@ object LiveDemoShowcase : BuildType({
                 
                 echo ""
                 echo "Running application to prove the pipeline works..."
-                python3 hello_world.py
+                python3 app.py
                 
                 echo ""
                 echo "📌 This change is now in Git history - fully auditable!"
