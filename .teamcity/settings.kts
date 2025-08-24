@@ -438,7 +438,7 @@ object LiveDemoShowcase : BuildType({
                 echo ""
                 echo "💡 What just happened?"
                 echo "─────────────────────────────────────────"
-                echo "1. Pipeline configuration was modified in IntelliJ"
+                echo "1. Pipeline configuration was modified in IntelliJJ"
                 echo "2. Changes were committed to Git"
                 echo "3. TeamCity automatically detected and applied changes"
                 echo "4. New build configuration is now live"
