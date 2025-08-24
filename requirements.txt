@@ -1,6 +1,4 @@
-# Requirements for Password Generator Application
-# Note: This app uses only built-in Python modules
-# secrets, platform, datetime, os, sys, string are all built-in to Python 3.12
 
-# No external dependencies required for this application
-# All functionality uses Python standard library modules
+# No external dependencies required
+# This application uses only Python built-in modules:
+# - secrets, string, platform, datetime, os, sys

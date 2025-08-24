@@ -207,6 +207,7 @@ object BuildAndTest : BuildType({
             name = "🚀 Run Password Generator Demo"
             command = file {
                 filename = "app.py"
+                arguments = "--console"
             }
         }
 
