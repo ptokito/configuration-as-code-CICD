@@ -1,25 +1,24 @@
-import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+/*
+ * CONFIGURATION AS CODE DEMO
+ * Last updated: [Current time] - Live demo from IntelliJ
+ */
 
-version = "2019.2"
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
+
+version = "2023.11"
 
 project {
-    buildType(Build)
-}
+    buildType {
+        name = "Configuration as Code Pipeline"
 
-object Build : BuildType({
-    name = "Configuration as Code Demo"
-
-    steps {
-        script {
-            scriptContent = """
-                echo "============================================================"
-                echo "🎯 CONFIGURATION AS CODE IS WORKING!"
-                echo "============================================================"
-                echo "This message proves that TeamCity is reading settings.kts"
-                echo "Build Number: %build.number%"
-                echo "============================================================"
-            """.trimIndent()
+        steps {
+            script {
+                scriptContent = """
+                    echo "This entire pipeline is defined in settings.kts"
+                    echo "Pushed from IntelliJ at: $(date)"
+                """.trimIndent()
+            }
         }
     }
-})
+}
