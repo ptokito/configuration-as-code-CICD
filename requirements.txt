@@ -1,4 +1,11 @@
+# Core application
+Flask==3.0.0
+Werkzeug==3.0.1
+gunicorn==21.2.0
 
-# No external dependencies required
-# This application uses only Python built-in modules:
-# - secrets, string, platform, datetime, os, sys
+# Testing (these will be installed in TeamCity)
+pytest==8.0.0
+coverage==7.4.0
+
+# Security scanning
+safety==3.1.0
