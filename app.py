@@ -22,7 +22,7 @@ def hello_world():
         'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'version': os.getenv('RENDER_GIT_COMMIT', version_info.get('version', 'dev'))[:7],
         'environment': os.getenv('DEPLOY_ENV', 'production'),
-        'deployed_by': os.getenv('DEPLOYED_BY', 'TeamCity Pipeline'),
+        'deployed_by': os.getenv('DEPLOYED_BY', 'GitHub Actions'),
         'render_service': os.getenv('RENDER_SERVICE_NAME', 'configuration-as-code-cicd'),
         'region': os.getenv('RENDER_REGION', 'oregon')
     }
@@ -37,7 +37,7 @@ def health_check():
         'service': 'Configuration-as-Code-Demo',
         'timestamp': datetime.now().isoformat(),
         'environment': os.getenv('DEPLOY_ENV', 'production'),
-        'deployed_by': os.getenv('DEPLOYED_BY', 'TeamCity Pipeline'),
+        'deployed_by': os.getenv('DEPLOYED_BY', 'GitHub Actions'),
         'version': os.getenv('RENDER_GIT_COMMIT', 'unknown')[:7],
         'message': 'Deployed via Configuration as Code'
     }), 200
@@ -46,32 +46,32 @@ def health_check():
 def api_info():
     """API endpoint showing pipeline information"""
     return jsonify({
-        'message': '🎯 Configuration as Code Demo',
+        'message': 'Configuration as Code Demo',
         'pipeline': {
             'source': 'GitHub',
-            'ci_cd': 'TeamCity with Kotlin DSL',
+            'ci_cd': 'GitHub Actions',
             'deployment': 'Render.com via Webhook',
-            'trigger': 'Push from IntelliJ → TeamCity → Render'
+            'trigger': 'Push from IntelliJ → GitHub Actions → Render'
         },
         'features': [
             'Version Control Integration',
             'Automated Testing',
             'Security Scanning',
-            'Webhook Deployment',
+            'Multi-environment Deployment',
             'Infrastructure as Code'
         ],
         'deployment_info': {
-            'method': 'Webhook from TeamCity',
+            'method': 'Webhook from GitHub Actions',
             'auto_deploy': False,
             'environment': os.getenv('DEPLOY_ENV', 'production'),
             'timestamp': datetime.now().isoformat()
         },
         'configuration_as_code': {
-            'definition': 'All pipeline configuration in settings.kts',
+            'definition': 'All pipeline configuration in .github/workflows/demo.yml',
             'benefits': [
                 'Version controlled',
                 'Code review process',
-                'Type-safe with Kotlin',
+                'YAML configuration',
                 'IDE support',
                 'Reproducible'
             ]
@@ -82,15 +82,15 @@ def api_info():
 def deployment_info():
     """Show deployment details"""
     return jsonify({
-        'deployment_method': 'TeamCity Webhook',
+        'deployment_method': 'GitHub Actions Webhook',
         'auto_deploy_github': False,
         'deployed_at': datetime.now().isoformat(),
-        'deployed_by': 'TeamCity Pipeline',
+        'deployed_by': 'GitHub Actions Pipeline',
         'trigger_chain': [
             '1. Code pushed from IntelliJ',
-            '2. TeamCity detects change',
+            '2. GitHub Actions detects change',
             '3. Pipeline executes',
-            '4. TeamCity calls Render webhook',
+            '4. GitHub Actions calls Render webhook',
             '5. Render deploys application'
         ],
         'render_commit': os.getenv('RENDER_GIT_COMMIT', 'unknown'),
