@@ -1,0 +1,73 @@
+name: Configuration as Code Demo
+
+# Trigger on push to main branch
+on:
+  push:
+    branches: [ main ]
+  # Also allow manual trigger for demo purposes
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - uses: actions/checkout@v3
+
+      # Step 2: Verify Config Source
+      - name: "1. Verify Config Source"
+        run: |
+          echo "================================================"
+          echo "🎯 CONFIGURATION AS CODE DEMONSTRATION"
+          echo "================================================"
+          echo "This pipeline is defined in .github/workflows/demo.yml"
+          echo "Pushed from IntelliJ at: $(date)"
+          echo "No UI configuration needed - everything is in code!"
+          echo "================================================"
+
+      # Step 3: Setup Python
+      - name: "2. Setup Python Environment"
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # Step 4: Install Dependencies
+      - name: "3. Install Dependencies"
+        run: |
+          echo "Installing Python dependencies..."
+          pip install -r requirements.txt
+
+      # Step 5: Run Tests
+      - name: "4. Run Tests"
+        run: |
+          echo "Running tests..."
+          python -m pytest test_app.py -v
+
+      # Step 6: Build/Verify Application
+      - name: "5. Build Application"
+        run: |
+          echo "Building application..."
+          python app.py
+
+      # Step 7: Deploy to Render
+      - name: "6. Deploy to Render.com"
+        run: |
+          echo "================================================"
+          echo "🚀 DEPLOYING TO RENDER.COM"
+          echo "================================================"
+          curl -X POST https://api.render.com/deploy/srv-ctch8o8gph6c73aj1f90/key/4vJGwu7sqxI
+          echo ""
+          echo "✅ Deployment triggered via GitHub Actions!"
+          echo "🌐 Application: https://configuration-as-code-cicd.onrender.com"
+          echo "================================================"
+
+      # DEMO: Uncomment this block during your live presentation
+      # - name: "7. Security Scan - ADDED LIVE!"
+      #   run: |
+      #     echo "================================================"
+      #     echo "⚡ THIS STEP WAS ADDED BY EDITING demo.yml"
+      #     echo "No clicking through UIs!"
+      #     echo "Just uncommented these lines and pushed to Git"
+      #     echo "Timestamp: $(date)"
+      #     echo "================================================"
