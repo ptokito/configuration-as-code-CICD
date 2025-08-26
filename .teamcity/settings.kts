@@ -89,20 +89,20 @@ project {
                 """.trimIndent()
             }
 
-//             DEMO MOMENT: Uncomment during live demo to show instant changes
-//             script {
-//                name = "6. NEW STEP - Added Live!"
-//                 scriptContent = """
-//                     echo "================================================"
-//                     echo "THIS STEP WAS ADDED BY EDITING settings.kts"
-//                     echo "No UI clicking needed!"
-//                     echo "Timestamp: $(date)"
-//                     echo "================================================"
-//                 """.trimIndent()
-//             }
+             DEMO MOMENT: Uncomment during live demo to show instant changes
+             script {
+                name = "6. NEW STEP - Added Live!"
+                 scriptContent = """
+                     echo "================================================"
+                     echo "THIS STEP WAS ADDED BY EDITING settings.kts"
+                     echo "No UI clicking needed!"
+                     echo "Timestamp: $(date)"
+                     echo "================================================"
+                 """.trimIndent()
+             }
         }
 
-        // TRIGGERS - Also configuration as code!
+
         triggers {
             vcs {
                 branchFilter = "+:main"
