@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuration as Code Demo - Tim Okito</title>
+    <title>Configuration as Code Demo</title>
     <style>
         * {
             margin: 0;
@@ -12,328 +12,233 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
             padding: 40px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 2.5em;
         }
 
-        .author {
-            font-size: 1.3rem;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-
-        .intro {
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 20px;
-            margin-bottom: 40px;
-            border-radius: 4px;
-        }
-
-        .intro p {
-            color: #555;
-            font-size: 1.1rem;
-        }
-
-        h2 {
-            color: #2c3e50;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            font-weight: 500;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .tech-item {
-            padding: 20px;
-            background: #fafafa;
-            border-radius: 6px;
-            border: 1px solid #e1e4e8;
-        }
-
-        .tech-item h3 {
-            color: #2c3e50;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .tech-item p {
+        .subtitle {
             color: #666;
-            font-size: 0.95rem;
-        }
-
-        .pipeline {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 6px;
-            margin: 30px 0;
+            margin-bottom: 30ушки;
+            font-size: 1.2em;
         }
 
         .pipeline-flow {
+            background: #f7f9fc;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .flow-diagram {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-            padding: 12px;
-            background: white;
-            border: 2px solid #3498db;
-            border-radius: 6px;
-            font-weight: 500;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .step:not(:last-child)::after {
-            content: '→';
-            position: absolute;
-            right: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #3498db;
-            font-size: 1.5rem;
-        }
-
-        .benefits {
-            margin: 40px 0;
-        }
-
-        .benefits ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .benefits li {
-            padding: 12px 0;
-            border-bottom: 1px solid #ecf0f1;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .benefits li:last-child {
-            border-bottom: none;
-        }
-
-        .benefits li::before {
-            content: '✓';
-            color: #27ae60;
-            font-weight: bold;
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-
-        .benefit-text {
-            flex: 1;
-        }
-
-        .benefit-text strong {
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .metadata {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 40px;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .metadata-row {
-            display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #e1e4e8;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .metadata-row:last-child {
-            border-bottom: none;
+        .flow-step {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: #4a5568;
+            flex: 1;
+            text-align: center;
+            min-width: 150px;
         }
 
-        .metadata-label {
-            color: #7f8c8d;
+        .flow-arrow {
+            color: #764ba2;
+            font-size: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-card h3 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card p {
+            color: #2d3748;
+            font-size: 1.1em;
             font-weight: 600;
         }
 
-        .metadata-value {
-            color: #2c3e50;
+        .config-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .config-highlight h2 {
+            margin-bottom: 10px;
+        }
+
+        .config-file {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .benefits-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.2em;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
-            color: #7f8c8d;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .pipeline-flow {
+            .flow-diagram {
                 flex-direction: column;
             }
 
-            .step:not(:last-child)::after {
-                display: none;
+            .flow-arrow {
+                transform: rotate(90deg);
             }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Hello World!!!</h1>
-    <p class="author">from Tim Okito</p>
+    <h1>🚀 Configuration as Code Demo</h1>
+    <p class="subtitle">Everything in this pipeline is defined in code, not UI clicks</p>
 
-    <div class="intro">
-        <p>This is a demonstration of <strong>Configuration as Code</strong> using TeamCity.
-            The entire CI/CD pipeline that deployed this application was defined in a single Kotlin DSL file,
-            with no manual configuration required.</p>
-    </div>
-
-    <h2>Technology Stack</h2>
-    <div class="tech-stack">
-        <div class="tech-item">
-            <h3>TeamCity + Kotlin DSL</h3>
-            <p>CI/CD pipeline configuration defined entirely in code with type safety and IDE support</p>
-        </div>
-        <div class="tech-item">
-            <h3>IntelliJ IDEA</h3>
-            <p>Development environment with integrated Git support for pushing changes</p>
-        </div>
-        <div class="tech-item">
-            <h3>GitHub</h3>
-            <p>Version control for both application code and pipeline configuration</p>
-        </div>
-        <div class="tech-item">
-            <h3>Python Flask</h3>
-            <p>Simple web application framework for this demo</p>
-        </div>
-        <div class="tech-item">
-            <h3>Render.com</h3>
-            <p>Cloud hosting platform with webhook-based deployment</p>
-        </div>
-        <div class="tech-item">
-            <h3>Configuration as Code</h3>
-            <p>Infrastructure and pipeline defined in .teamcity/settings.kts</p>
+    <div class="pipeline-flow">
+        <h2 style="margin-bottom: 20px; color: #4a5568;">Pipeline Flow</h2>
+        <div class="flow-diagram">
+            <div class="flow-step">IntelliJ IDE</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">GitHub</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">GitHub Actions</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Render.com</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="background: #48bb78; color: white;">Live App</div>
         </div>
     </div>
 
-    <div class="pipeline">
-        <h2 style="margin-top: 0;">CI/CD Pipeline Flow</h2>
-        <div class="pipeline-flow">
-            <div class="step">IntelliJ</div>
-            <div class="step">GitHub</div>
-            <div class="step">TeamCity</div>
-            <div class="step">Render</div>
-            <div class="step">Live App</div>
+    <div class="config-highlight">
+        <h2>Configuration Location</h2>
+        <p>Our entire CI/CD pipeline is defined in:</p>
+        <div class="config-file">.github/workflows/demo.yml</div>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>Environment</h3>
+            <p>{{ environment }}</p>
+        </div>
+        <div class="info-card">
+            <h3>Deployed By</h3>
+            <p>GitHub Actions</p>
+        </div>
+        <div class="info-card">
+            <h3>Last Deploy</h3>
+            <p>{{ timestamp }}</p>
+        </div>
+        <div class="info-card">
+            <h3>Version</h3>
+            <p>{{ version }}</p>
         </div>
     </div>
 
-    <h2>Why Configuration as Code?</h2>
-    <div class="benefits">
-        <ul>
-            <li>
-                <div class="benefit-text">
-                    <strong>Version Control:</strong> All pipeline changes are tracked in Git with complete history
-                </div>
-            </li>
-            <li>
-                <div class="benefit-text">
-                    <strong>Code Review:</strong> Infrastructure changes go through the same PR process as application code
-                </div>
-            </li>
-            <li>
-                <div class="benefit-text">
-                    <strong>No Manual Configuration:</strong> Everything is defined in code - no clicking through UI screens
-                </div>
-            </li>
-            <li>
-                <div class="benefit-text">
-                    <strong>Reproducible:</strong> The same configuration file creates the same pipeline every time
-                </div>
-            </li>
-            <li>
-                <div class="benefit-text">
-                    <strong>IDE Support:</strong> Full auto-completion, syntax highlighting, and error checking
-                </div>
-            </li>
-            <li>
-                <div class="benefit-text">
-                    <strong>Team Collaboration:</strong> Everyone can understand and modify the pipeline
-                </div>
-            </li>
+    <div style="margin: 30px 0;">
+        <h2 style="margin-bottom: 20px; color: #4a5568;">Configuration as Code Benefits</h2>
+        <ul class="benefits-list">
+            <li>Version controlled - every change is tracked in Git</li>
+            <li>Code review process - changes go through pull requests</li>
+            <li>Instant rollback - just revert the commit</li>
+            <li>Self-documenting - the pipeline IS the documentation</li>
+            <li>Reproducible - copy the YAML to create identical pipelines</li>
+            <li>No manual UI configuration needed</li>
+            <li>IDE support with syntax highlighting and validation</li>
         </ul>
     </div>
 
-    <div class="metadata">
-        <div class="metadata-row">
-            <span class="metadata-label">Deployed:</span>
-            <span class="metadata-value">{{ timestamp }}</span>
-        </div>
-        <div class="metadata-row">
-            <span class="metadata-label">Version:</span>
-            <span class="metadata-value">{{ version }}</span>
-        </div>
-        <div class="metadata-row">
-            <span class="metadata-label">Environment:</span>
-            <span class="metadata-value">{{ environment }}</span>
-        </div>
-        <div class="metadata-row">
-            <span class="metadata-label">Pipeline:</span>
-            <span class="metadata-value">TeamCity → Webhook → Render</span>
-        </div>
-        <div class="metadata-row">
-            <span class="metadata-label">Config File:</span>
-            <span class="metadata-value">.teamcity/settings.kts</span>
-        </div>
-    </div>
+<!--    <div style="background: #fef5e7; padding: 20px; border-radius: 10px; margin: 20px 0;">-->
+<!--        <h3 style="color: #f39c12; margin-bottom: 10px;">Live Demo Instructions</h3>-->
+<!--        <p style="color: #7a7a7a; line-height: 1.6;">-->
+<!--            To demonstrate configuration as code:<br>-->
+<!--            1. Open <code>.github/workflows/demo.yml</code> in IntelliJ<br>-->
+<!--            2. Uncomment Step 7 (Security Scan)<br>-->
+<!--            3. Commit and push to GitHub<br>-->
+<!--            4. Watch GitHub Actions automatically add the new step<br>-->
+<!--            5. No TeamCity UI or manual configuration needed!-->
+<!--        </p>-->
+<!--    </div>-->
 
     <div class="footer">
-        <p>TeamCity Configuration as Code Demo</p>
-        <p>Deployed automatically via CI/CD pipeline</p>
+        <p><strong>Pipeline Path:</strong> Code pushed from IntelliJ → GitHub triggers Actions → Deploys to Render</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            Service: {{ render_service }} | Region: {{ region }}
+        </p>
     </div>
 </div>
 </body>
