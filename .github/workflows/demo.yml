@@ -44,11 +44,12 @@ jobs:
           echo "Running tests..."
           python -m pytest test_app.py -v
 
-      # Step 6: Build/Verify Application
+      # Step 6: Verify Application (without starting server)
       - name: "5. Build Application"
         run: |
           echo "Building application..."
-          python app.py
+          python -c "import app; print('✅ App module loaded successfully')"
+          echo "Application verified and ready for deployment"
 
       # Step 7: Deploy to Render
       - name: "6. Deploy to Render.com"
