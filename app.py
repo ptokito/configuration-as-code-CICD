@@ -107,3 +107,5 @@ if __name__ == '__main__':
         port=port,
         debug=False  # Never use debug=True in production
     )
+
+    # This should work now.
