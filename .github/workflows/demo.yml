@@ -62,13 +62,13 @@ jobs:
           echo "✅ Deployment triggered via GitHub Actions!"
           echo "🌐 Application: https://configuration-as-code-cicd.onrender.com"
           echo "================================================="
-
-      # DEMO: Uncomment this block during your live presentation
-      # - name: "7. Security Scan - ADDED LIVE!"
-      #   run: |
-      #     echo "================================================"
-      #     echo "⚡ THIS STEP WAS ADDED BY EDITING demo.yml"
-      #     echo "No clicking through UIs!"
-      #     echo "Just uncommented these lines and pushed to Git"
-      #     echo "Timestamp: $(date)"
-      #     echo "================================================"
+          
+           DEMO: Uncomment this block during your live presentation
+           - name: "7. Security Scan - ADDED LIVE!"
+             run: |
+               echo "================================================"
+               echo "⚡ THIS STEP WAS ADDED BY EDITING demo.yml"
+               echo "No clicking through UIs!"
+               echo "Just uncommented these lines and pushed to Git"
+               echo "Timestamp: $(date)"
+             echo "================================================"
