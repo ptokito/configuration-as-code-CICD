@@ -22,7 +22,7 @@ object GitHubRepo : GitVcsRoot({
 
 object CICDPipeline : BuildType({
     name = "Configuration as Code Pipeline"
-    description = "Everything defined in Kotlin DSL - no UI configuration needed"
+    description = "Everything defined in Kotlin DSL - no UI configuration needed - UPDATED"
 
     vcs {
         root(GitHubRepo)
@@ -38,6 +38,7 @@ object CICDPipeline : BuildType({
                 echo "This pipeline is defined in .teamcity/settings.kts"
                 echo "Pushed from IntelliJ at: ${'$'}(date)"
                 echo "No TeamCity UI configuration needed!"
+                echo "Updated and testing VCS trigger..."
                 echo "================================================"
             """.trimIndent()
         }
@@ -128,7 +129,7 @@ object CICDPipeline : BuildType({
 })
 
 // DEMO: Show how easy to create multiple environments
-/*
+
 object StagingPipeline : BuildType({
     name = "Staging Environment Pipeline"
     description = "Created by copying Kotlin DSL - 30 seconds vs 30 minutes of clicking!"
@@ -147,5 +148,3 @@ object StagingPipeline : BuildType({
         }
     }
 })
-*/
-/* gooooo */
