@@ -83,7 +83,7 @@ object CICDPipeline : BuildType({
                 echo "================================================"
                 echo "🚀 DEPLOYING TO RENDER.COM"
                 echo "================================================"
-                curl -X POST https://api.render.com/deploy/srv-ctch8o8gph6c73aj1f90/key/4vJGwu7sqxI
+                curl -X POST https://api.render.com/deploy/srv-d2ltti7diees73cbo5h0?key=K7rSQMB44Ps
                 echo "✅ Deployment triggered via TeamCity!"
                 echo "================================================"
             """.trimIndent()
